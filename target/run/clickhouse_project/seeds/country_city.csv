@@ -1,0 +1,26 @@
+
+    
+    
+    
+    create table `seeds`.`country_city` 
+   ("country" String,"city" String)
+    
+  engine = MergeTree()
+    
+      order by (tuple())
+    
+  ;
+    -- dbt seed --
+    
+  
+  
+
+  
+    
+
+    
+  
+
+
+;
+  

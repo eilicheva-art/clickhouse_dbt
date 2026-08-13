@@ -1,0 +1,123 @@
+
+        
+  
+    
+    
+    
+        
+         
+
+
+        insert into `gold`.`fct__sales_detail`
+        ("order_item_id", "order_id", "user_id", "product_id", "order_item_status", "order_item_created_at", "order_item_shipped_at", "order_item_delivered_at", "order_item_returned_at", "sale_price", "delivery_days", "is_returned", "order_status", "order_created_at", "order_shipped_at", "order_delivered_at", "order_returned_at", "num_of_item", "cost", "retail_price", "profit", "category", "product_name", "brand", "department", "sku", "distribution_center_id", "distribution_center_name", "user_full_name", "email", "age", "gender", "state", "city", "country", "traffic_source", "user_created_at", "_loaded_at")
+
+WITH
+toDateTime(now()) AS load_dttm,
+order_items AS (
+    SELECT
+        id AS order_item_id
+        , order_id
+        , user_id
+        , product_id
+        , status AS order_item_status
+        , created_at AS order_item_created_at
+        , shipped_at AS order_item_shipped_at
+        , delivered_at AS order_item_delivered_at
+        , returned_at AS order_item_returned_at
+        , sale_price
+        , delivery_days
+        , is_returned
+    FROM `silver`.`ecommerce__order_items`
+),
+orders AS (
+    SELECT
+        order_id
+        , status AS order_status
+        , created_at AS order_created_at
+        , returned_at AS order_returned_at
+        , shipped_at AS order_shipped_at
+        , delivered_at AS order_delivered_at
+        , num_of_item
+    FROM `silver`.`ecommerce__orders`
+),
+
+products AS(
+    SELECT
+        id
+        , cost
+        , retail_price
+        , profit
+        , category
+        , name AS product_name
+        , brand
+        , department
+        , sku
+        , distribution_center_id
+        , distribution_center_name
+    FROM `silver`.`ecommerce__products`
+),
+
+users AS(
+    SELECT 
+        id
+        , full_name AS user_full_name
+        , email
+        , age
+        , gender
+        , state
+        , city
+        , country
+        , traffic_source
+        , created_at AS user_created_at
+    FROM `silver`.`ecommerce__users`
+)
+
+SELECT
+    oi.order_item_id             AS order_item_id
+    , oi.order_id                AS order_id
+    , oi.user_id                 AS user_id
+    , oi.product_id              AS product_id
+    , oi.order_item_status       AS order_item_status
+    , oi.order_item_created_at   AS order_item_created_at
+    , oi.order_item_shipped_at   AS order_item_shipped_at
+    , oi.order_item_delivered_at AS order_item_delivered_at
+    , oi.order_item_returned_at  AS order_item_returned_at
+    , oi.sale_price              AS sale_price
+    , oi.delivery_days           AS delivery_days
+    , oi.is_returned             AS is_returned
+    , o.order_status             AS order_status
+    , o.order_created_at         AS order_created_at
+    , o.order_shipped_at         AS order_shipped_at
+    , o.order_delivered_at       AS order_delivered_at
+    , o.order_returned_at        AS order_returned_at
+    , o.num_of_item              AS num_of_item
+    , p.cost                     AS cost
+    , p.retail_price             AS retail_price
+    , p.profit                   AS profit
+    , p.category                 AS category
+    , p.product_name             AS product_name
+    , p.brand                    AS brand
+    , p.department               AS department
+    , p.sku                      AS sku
+    , p.distribution_center_id   AS distribution_center_id
+    , p.distribution_center_name AS distribution_center_name
+    , u.user_full_name           AS user_full_name
+    , u.email                    AS email
+    , u.age                      AS age
+    , u.gender                   AS gender
+    , u.state                    AS state
+    , u.city                     AS city
+    , u.country                  AS country
+    , u.traffic_source           AS traffic_source
+    , u.user_created_at          AS user_created_at
+
+    
+    , load_dttm                  AS _loaded_at
+FROM order_items AS oi
+LEFT JOIN orders AS o ON oi.order_id = o.order_id
+LEFT JOIN products p ON oi.product_id = p.id
+LEFT JOIN users u ON oi.user_id = u.id
+
+
+  
+    
