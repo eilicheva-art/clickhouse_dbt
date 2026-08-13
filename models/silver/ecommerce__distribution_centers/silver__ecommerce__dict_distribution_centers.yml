@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: silver__ecommerce__dict_distribution_centers
+    description: >
+      Серебрянный слой слой. Модель для словаря распределительных центров и складов.
+
+    columns:
+      - name: id
+        description: Уникальный идентификатор распределительного центра (склада).
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: Название распределительного центра и его географическое положение (Город, Штат).

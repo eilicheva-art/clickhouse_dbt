@@ -1,0 +1,121 @@
+version: 2
+
+models:
+  - name: gold__fct__sales_detail
+    description: >
+      Золотой слой. Детализированная витрина.
+
+    columns:
+      - name: order_item_id
+        description: Уникальный идентификатор записи (элемента в заказе).
+        tests:
+          - not_null
+          - unique
+
+      - name: order_id
+        description: Идентификатор заказа, к которому относится элемент.
+
+      - name: user_id
+        description: Идентификатор пользователя, сделавшего заказ.
+
+      - name: product_id
+        description: Идентификатор купленного товара.
+
+      - name: order_item_status
+        description: Текущий статус обработки элемента заказа.
+
+      - name: order_item_created_at
+        description: Дата и время создания записи / добавления в корзину (UTC).
+
+      - name: order_item_shipped_at
+        description: Дата и время отправки товара со склада (может быть пустой).
+
+      - name: order_item_delivered_at
+        description: Дата и время доставки товара (может быть пустой).
+
+      - name: order_item_returned_at
+        description: Дата и время возврата товара (может быть пустой).
+
+      - name: sale_price
+        description: Фактическая цена продажи товара с учетом скидок.
+
+      - name: delivery_days
+        description: Количество дней между отправкой и доставкой заказа.
+
+      - name: is_returned
+        description: Признак возврата заказа (0 — заказ не возвращался, 1 — заказ был возвращен).
+
+      - name: order_status
+        description: Статус заказа.
+
+      - name: order_created_at
+        description: Дата и время оформления заказа (UTC).
+
+      - name: order_shipped_at
+        description: Дата и время отгрузки заказа.
+
+      - name: order_delivered_at
+        description: Дата и время доставки заказа.
+
+      - name: order_returned_at
+        description: Дата и время возврата заказа.
+
+      - name: num_of_item
+        description: Количество товаров в заказе.
+
+      - name: cost
+        description: Себестоимость производства или закупки товара.
+
+      - name: retail_price
+        description: Рекомендуемая розничная цена товара в магазине.
+
+      - name: profit
+        description: Прибыль.
+
+      - name: category
+        description: Категория товара.
+
+      - name: product_name
+        description: Наименование товара.
+
+      - name: brand
+        description: Бренд/производитель товара.
+
+      - name: department
+        description: Целевой отдел (для кого предназначен товар).
+
+      - name: sku
+        description: Складской идентификатор товара (хеш-строка).
+
+      - name: distribution_center_id
+        description: Идентификатор распределительного центра/склада.
+
+      - name: distribution_center_name
+        description:  Наименование распределительного центра/склада.
+
+      - name: user_full_name
+        description: Полное имя пользователя, объединённое из имени и фамилии.
+
+      - name: email
+        description: Адрес электронной почты пользователя.
+
+      - name: age
+        description: Возраст пользователя.
+
+      - name: gender
+        description: Пол пользователя.
+
+      - name: state
+        description: Штат или регион проживания пользователя.
+
+      - name: city
+        description: Город проживания пользователя.
+
+      - name: country
+        description: Страна проживания пользователя.
+
+      - name: traffic_source
+        description: Источник трафика или канал привлечения пользователя.
+
+      - name: user_created_at
+        description: Дата и время регистрации пользователя.

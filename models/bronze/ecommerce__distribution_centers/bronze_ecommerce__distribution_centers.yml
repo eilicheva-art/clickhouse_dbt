@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: bronze_ecommerce__distribution_centers
+    description: >
+      Бронзовый слой. Модель для таблицы распределительных центров и складов.
+
+    columns:
+      - name: id
+        description: Уникальный идентификатор распределительного центра (склада).
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: Название распределительного центра и его географическое положение (Город, Штат).
+
+      - name: _loaded_at
+        description: Дата и время загрузки записи в бронзовый слой.

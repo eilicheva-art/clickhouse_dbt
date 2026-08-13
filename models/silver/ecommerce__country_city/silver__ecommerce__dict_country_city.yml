@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: silver__ecommerce__dict_country_city
+    description: >
+      Серебрянный слой слой. Модель для словаря стран и городов.
+
+    columns:
+      - name: country
+        description: Уникальный идентификатор страны.
+        tests:
+          - not_null
+          - unique
+
+      - name: city
+        description: Город.

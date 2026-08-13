@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: bronze__ecommerce__users
+    description: >
+      Бронзовый слой. Модель для таблицы пользователей.
+
+    columns:
+      - name: id
+        description: Уникальный идентификатор пользователя.
+        tests:
+          - not_null
+          - unique
+
+      - name: first_name
+        description: Имя пользователя.
+
+      - name: last_name
+        description: Фамилия пользователя.
+
+      - name: email
+        description: Адрес электронной почты пользователя.
+
+      - name: gender
+        description: Пол пользователя.
+
+      - name: country
+        description: Страна проживания пользователя.
+
+      - name: created_at
+        description: Дата и время регистрации пользователя.
+
+      - name: _loaded_at
+        description: Дата и время загрузки записи в бронзовый слой.

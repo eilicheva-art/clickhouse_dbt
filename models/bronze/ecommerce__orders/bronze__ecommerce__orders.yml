@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: bronze__ecommerce__orders
+    description: >
+      Бронзовый слой. Модель для таблицы заказов.
+
+    columns:
+      - name: order_id
+        description: Уникальный идентификатор заказа.
+        tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: Идентификатор пользователя.
+
+      - name: status
+        description: Текущий статус заказа.
+
+      - name: created_at
+        description: Дата и время оформления заказа.
+
+      - name: returned_at
+        description: Дата и время возврата заказа.
+
+      - name: shipped_at
+        description: Дата и время отгрузки заказа.
+
+      - name: delivered_at
+        description: Дата и время доставки заказа.
+
+      - name: num_of_item
+        description: Количество товаров в заказе.
+
+      - name: _loaded_at
+        description: Дата и время загрузки записи в бронзовый слой.

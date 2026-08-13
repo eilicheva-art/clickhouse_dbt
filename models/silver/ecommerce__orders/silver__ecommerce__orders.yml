@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: silver__ecommerce__orders
+    description: >
+      Серебряный слой. Модель для таблицы заказов.
+
+    columns:
+      - name: order_id
+        description: Уникальный идентификатор заказа.
+
+      - name: user_id
+        description: Идентификатор пользователя.
+
+      - name: status
+        description: Текущий статус заказа.
+
+      - name: created_at
+        description: Дата и время оформления заказа.
+
+      - name: returned_at
+        description: Дата и время возврата заказа.
+
+      - name: shipped_at
+        description: Дата и время отгрузки заказа.
+
+      - name: delivered_at
+        description: Дата и время доставки заказа.
+
+      - name: num_of_item
+        description: Количество товаров в заказе.
+
+      - name: delivery_days
+        description: Количество дней между отгрузкой и доставкой.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
+
+      - name: is_returned
+        description: Флаг возврата заказа.
+
+      - name: _loaded_at
+        description: Дата и время загрузки записи в серебряный слой.
+
+      - name: _source
+        description: Источник данных.
+

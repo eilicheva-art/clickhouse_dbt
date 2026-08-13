@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: silver__ecommerce__products
+    description: >
+      Серебряный слой. Модель для таблицы каталога товаров.
+
+    columns:
+      - name: id
+        description: Уникальный идентификатор товара.
+
+      - name: cost
+        description: Себестоимость производства или закупки товара.
+
+      - name: category
+        description: Категория товара.
+
+      - name: name
+        description: Наименование товара.
+
+      - name: brand
+        description: Бренд/производитель товара.
+
+      - name: retail_price
+        description: Рекомендуемая розничная цена товара в магазине.
+
+      - name: department
+        description: Целевой отдел (для кого предназначен товар).
+
+      - name: sku
+        description: Складской идентификатор товара (хеш-строка).
+        tests:
+          - is_valid_sku_length:
+              arguments:
+                required_length: 32
+        
+      - name: distribution_center_id
+        description: Идентификатор распределительного центра/склада.
+
+      - name: distribution_center_name
+        description: Наименование распределительного центра/склада.
+
+      - name: profit
+        description: Прибыль.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0

@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: silver__ecommerce__users
+    description: >
+      Серебряный слой. Модель для таблицы пользователей.
+
+    columns:
+      - name: id
+        description: Уникальный идентификатор пользователя.
+
+      - name: full_name
+        description: Полное имя пользователя, объединённое из имени и фамилии.
+
+      - name: email
+        description: Адрес электронной почты пользователя.
+
+      - name: age
+        description: Возраст пользователя.
+
+      - name: gender
+        description: Пол пользователя.
+
+      - name: state
+        description: Штат или регион проживания пользователя.
+
+      - name: street_address
+        description: Улица и номер дома пользователя.
+
+      - name: postal_code
+        description: Почтовый индекс пользователя.
+
+      - name: city
+        description: Город проживания пользователя.
+        tests:
+          - no_string_null_values
+
+      - name: country
+        description: Страна проживания пользователя.
+
+      - name: traffic_source
+        description: Источник трафика или канал привлечения пользователя.
+
+      - name: created_at
+        description: Дата и время регистрации пользователя.
+
+      - name: _loaded_at
+        description: Дата и время загрузки записи в серебряный слой.
+
+      - name: _source
+        description: Источник данных.

@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: gold__fct__sales_agg_daily
+    description: >
+      Золотой слой. Агрегированная витрина.
+
+    columns:
+      - name: sales_date
+        description: Дата и время создания записи / добавления в корзину (UTC).
+        tests:
+          - not_null
+          - unique
+
+      - name: orders_count
+        description: Количество заказов.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
+
+      - name: order_items_count
+        description: Количество товаров.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
+
+      - name: revenue
+        description: Выручка.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
+
+      - name: total_cost
+        description: Себестоимость.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
+
+      - name: total_profit
+        description: Прибыль.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
+
+      - name: avg_sale_price
+        description: Средняя цена товара.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
+
+      - name:  avg_profit
+        description: Средняя выручка.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
+
+      - name: avg_delivery_days
+        description: Среднее количество дней между отправкой и доставкой заказа.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
+
+      - name: returned_items_count
+        description: Количество возвращенных товаров.
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
+
+      - name: returned_revenue
+        description: Сумма возвратов (по выручке).
+        tests:
+          - min_value:
+              arguments:
+                min_value: 0
