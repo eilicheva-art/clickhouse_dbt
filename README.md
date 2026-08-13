@@ -138,24 +138,16 @@ dbt docs generate
 dbt docs serve
 ```
 
-## Структура проекта
-
-```text
-clickhouse_project/
-├── dbt_project.yml
-├── profiles.yml
-├── models/
-├── seeds/
-├── macros/
-├── tests/
-├── snapshots/
-├── analyses/
-├── target/
-├── logs/
-└── README.md
-```
-
 ## Итог
 
 Проект формирует аналитическое хранилище на базе dbt и ClickHouse, где данные последовательно проходят этапы очистки, объединения и агрегации, обеспечивая подготовку данных для BI, аналитики и отчетности.
 
+## Используемые источники
+
+[Документация dbt на русском](https://docs.getdbt.tech)
+
+[Документация Docker](https://docs.docker.com)
+
+Книги
+- "Основы инженерии данных", Дж. Рис, М. Хоусли
+- "Архитектура медальона", С. Питхейн
